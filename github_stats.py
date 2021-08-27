@@ -2,6 +2,7 @@
 
 import asyncio
 import os
+import time
 from typing import Dict, List, Optional, Set, Tuple
 
 import aiohttp
@@ -506,7 +507,9 @@ async def main() -> None:
     async with aiohttp.ClientSession() as session:
         s = Stats(user, access_token, session)
         print(await s.to_str())
+    time.sleep(3600)
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    while True:
+        asyncio.run(main())
